@@ -17,7 +17,7 @@ class IdeaCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
-    
+
     return Card(
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: InkWell(
@@ -43,7 +43,7 @@ class IdeaCard extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 12),
-              
+
               // Content
               if (idea.text != null && idea.text!.isNotEmpty) ...[
                 Text(
@@ -56,7 +56,7 @@ class IdeaCard extends StatelessWidget {
                 ),
                 const SizedBox(height: 8),
               ],
-              
+
               // Media preview
               if (idea.imageUrl != null) ...[
                 Container(
@@ -64,7 +64,7 @@ class IdeaCard extends StatelessWidget {
                   width: double.infinity,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8),
-                    color: colorScheme.surfaceVariant,
+                    color: colorScheme.surfaceContainerHighest,
                   ),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(8),
@@ -83,13 +83,13 @@ class IdeaCard extends StatelessWidget {
                 ),
                 const SizedBox(height: 8),
               ],
-              
+
               // URL preview
               if (idea.url != null) ...[
                 Container(
                   padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
-                    color: colorScheme.surfaceVariant,
+                    color: colorScheme.surfaceContainerHighest,
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: Row(
@@ -115,11 +115,12 @@ class IdeaCard extends StatelessWidget {
                 ),
                 const SizedBox(height: 8),
               ],
-              
+
               // Room indicator
               if (idea.roomId != null) ...[
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                   decoration: BoxDecoration(
                     color: colorScheme.secondaryContainer,
                     borderRadius: BorderRadius.circular(12),
@@ -149,13 +150,13 @@ class IdeaCard extends StatelessWidget {
       ),
     );
   }
-  
+
   Widget _buildTypeIndicator(BuildContext context, Idea idea) {
     final colorScheme = Theme.of(context).colorScheme;
-    
+
     IconData icon;
     Color color;
-    
+
     if (idea.imageUrl != null) {
       icon = Icons.image;
       color = colorScheme.primary;
@@ -166,11 +167,11 @@ class IdeaCard extends StatelessWidget {
       icon = Icons.text_fields;
       color = colorScheme.tertiary;
     }
-    
+
     return Container(
       padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(
-        color: color.withOpacity(0.1),
+        color: color.withValues(alpha: 0.1),
         shape: BoxShape.circle,
       ),
       child: Icon(
@@ -180,11 +181,11 @@ class IdeaCard extends StatelessWidget {
       ),
     );
   }
-  
+
   String _formatDate(DateTime date) {
     final now = DateTime.now();
     final difference = now.difference(date);
-    
+
     if (difference.inDays > 0) {
       return '${difference.inDays}d ago';
     } else if (difference.inHours > 0) {
@@ -195,4 +196,4 @@ class IdeaCard extends StatelessWidget {
       return 'Just now';
     }
   }
-} 
+}

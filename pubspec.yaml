@@ -17,6 +17,12 @@ dependencies:
   hive: ^2.2.3
   hive_flutter: ^1.1.0
   path_provider: ^2.1.1
+  # Encryption and security
+  encrypt: ^5.0.1
+  crypto: ^3.0.3
+  flutter_secure_storage: ^9.0.0
+  # UUID generation
+  uuid: ^4.1.0
   # Optional: image_picker for adding image URLs via camera/gallery
   # TODO: Add real-time backend package (SpacetimeDB/Ably/Socket.io/etc when logic settled)
 
